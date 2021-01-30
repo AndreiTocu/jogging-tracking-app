@@ -10,4 +10,14 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # Logs in given user
+  def log_in_user(user, password: "password")
+    post '/api/signin', params: {
+      session: {
+        email: user.email,
+        password: password
+      }
+    }
+  end
 end
