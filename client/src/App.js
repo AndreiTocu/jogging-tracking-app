@@ -1,29 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Layout, Divider } from 'antd';
 import './App.css';
+import Home from './components/Home'
+import Navbar from './components/UI/Navbar'
+const { Content } = Layout;
 
 function App() {
-
-  const [users, setUsers] = useState();
-
-  useEffect(() => {
-    fetch('/api/users').then(response => {
-      return response.json();
-    }).then(data => {
-      setUsers(data);
-    });
-  }, []);
-
-  const list = users && users.map(user => {
-    return <li>{user.name}|{user.email}</li>
-  });
-
   return (
-    <div className="App">
-      <div>Users</div>
-      <ul>
-        {list}
-      </ul>
-    </div>
+    <Layout>
+      <Divider/>
+      <Navbar/>
+      <Content>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+          </Switch>
+        </BrowserRouter>
+      </Content>
+      <Divider/>
+    </Layout>
   );
 }
 
