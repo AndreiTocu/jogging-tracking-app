@@ -8,6 +8,7 @@ import Navbar from './components/UI/Navbar'
 import SignUp from './components/Auth/SignUp'
 import SignIn from './components/Auth/SignIn'
 import SignOut from './components/Auth/SignOut'
+import Feed from './components/Trainings/Feed'
 
 const { Content } = Layout;
 const pageContainer = {
@@ -65,6 +66,9 @@ function App() {
               </Route>
               <Route exact path="/signout" component={SignOut}>
                 <SignOut onSignoutSuccess={setUserSession}/>
+              </Route>
+              <Route exact path="/feed" component={Feed}>
+                <Feed userData={getUserData()}/>
               </Route>
             </Switch>
           </Content>

@@ -1,0 +1,25 @@
+one:
+  date: <%= Faker::Date.between('2020-01-01', '2021-01-01') %>
+  distance: <%= Faker::Number.normal(50, 1) %>
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
+  user: archer
+
+two:
+  date: <%= Faker::Date.between('2020-01-01', '2021-01-01') %>
+  distance: <%= Faker::Number.normal(50, 1) %>
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
+  user: archer
+
+three:
+  date: <%= Faker::Date.between('2020-01-01', '2021-01-01') %>
+  distance: <%= Faker::Number.normal(50, 1) %>
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
+  user: archer
+
+<% 30.times do |n| %>
+trainings_<%= n %>:
+  date: <%= Faker::Date.between('2020-01-01', '2021-01-01') %>
+  distance: <%= Faker::Number.normal(50, 1) %>
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
+  user: example
+<% end %>

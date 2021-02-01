@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { useHistory, useLocation, withRouter } from 'react-router-dom'
-import { Layout, Form, Input, Button, Checkbox, Card, Alert } from 'antd';
+import { useHistory } from 'react-router-dom'
+import { Layout, Form, Input, Button, Card, Alert } from 'antd';
 import axios from 'axios'
 
 const layout = {
@@ -20,7 +20,6 @@ const tailLayout = {
 };
 
 function SignIn(props) {
-  const location = useLocation();
   const history = useHistory();
   const [error, setError] = useState('');
 
@@ -33,7 +32,12 @@ function SignIn(props) {
         password: values.password
       }
     }).then(data => {
-       props.onSigninSuccess();
+      if (data.data.success === 1) {
+        props.onSigninSuccess();
+        history.push({pathname: '/'});
+      } else {
+        setError(data.data.error);
+      }
     });
   };
 
@@ -94,4 +98,4 @@ function SignIn(props) {
   );
 };
 
-export default withRouter(SignIn)
+export default SignIn
