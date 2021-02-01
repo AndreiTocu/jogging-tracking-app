@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include SessionsHelper
-
+  include TrainingsHelper
+  
   private
 
     def logged_in_user
