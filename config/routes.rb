@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     post '/signin', to: 'sessions#create'
     delete '/signout', to: 'sessions#destroy'
     get '/feed/:id', to: 'trainings#show'
+    post '/report', to: 'reports#show'
   end
 end
