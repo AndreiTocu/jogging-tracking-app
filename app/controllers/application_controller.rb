@@ -3,10 +3,6 @@ class ApplicationController < ActionController::API
   include TrainingsHelper
   include ReportsHelper
 
-  def fallback_index_html
-    render :file => 'public/index.html'
-  end
-
   private
 
     def logged_in_user
