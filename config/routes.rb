@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     post '/report', to: 'reports#show'
   end
 
-  match '*all', to: 'static_pages#index', via: [:get]
+  match '*all', to: 'pages#index', via: [:get]
 end
