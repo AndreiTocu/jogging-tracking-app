@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     get '/feed/:id', to: 'trainings#show'
     post '/report', to: 'reports#show'
   end
+
+  match '*all', to: 'static_pages#index', via: [:get]
 end
