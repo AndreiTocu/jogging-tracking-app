@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Modal, Button, TimePicker, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
@@ -18,7 +17,8 @@ function Update(props) {
 
   const handleSubmit = () => {
     if (time && date && distance ) {
-      axios.patch('/api/trainings/' + props.trainingData.id_training, {
+      axios.patch('/api/trainings/' + props.trainingData.id_training +
+        "?userId=" + props.userId, {
         training: {
           distance: distance,
           time: time,

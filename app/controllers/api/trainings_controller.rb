@@ -1,6 +1,7 @@
 module Api
   class TrainingsController < ApplicationController
     before_action :logged_in_user, only: [:show, :create, :destroy, :update]
+    before_action :current_admin?, only: [:create, :destroy, :update]
 
     def show
       @user = User.find(params[:id])
@@ -12,7 +13,8 @@ module Api
     end
 
     def create
-      training = current_user.trainings.create(trainings_params)
+      user = User.find(params[:userId])
+      training = user.trainings.create(trainings_params)
 
       if training.save
         render json: {
@@ -62,8 +64,8 @@ module Api
 
     private
 
-    def trainings_params
-      params.require(:training).permit(:date, :distance, :time)
-    end
+      def trainings_params
+        params.require(:training).permit(:date, :distance, :time)
+      end
   end
 end

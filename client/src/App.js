@@ -9,6 +9,8 @@ import SignUp from './components/Auth/SignUp'
 import SignIn from './components/Auth/SignIn'
 import SignOut from './components/Auth/SignOut'
 import Feed from './components/Trainings/Feed'
+import RoleRoute from './components/Permissions/RoleRoute'
+import Users from './components/User/Users'
 
 const { Content } = Layout;
 const pageContainer = {
@@ -20,8 +22,8 @@ function App() {
   const [userData, setUserData] = useState({});
   const [shouldRender, setShouldRender] = useState(false);
 
-  function onSetUserSession(id) {
-    setUserData({ id: id });
+  function onSetUserSession(id, role) {
+    setUserData({ id: id, role: role });
   }
 
   const setUserSession = useCallback(async () => {
@@ -33,7 +35,10 @@ function App() {
       userSession.id ?
         window.sessionStorage.setItem('userId', userSession.id) :
           window.sessionStorage.removeItem('userId');
-      onSetUserSession(userSession.id);
+      userSession.role ?
+        window.sessionStorage.setItem('userRole', userSession.role) :
+          window.sessionStorage.removeItem('userRole');
+      onSetUserSession(userSession.id, userSession.role);
     }
   }, []);
 
@@ -70,6 +75,9 @@ function App() {
               <Route exact path="/feed" component={Feed}>
                 <Feed userData={getUserData()}/>
               </Route>
+              <RoleRoute userData={userData} path='/user-feed'>
+                <Users/>
+              </RoleRoute>
             </Switch>
           </Content>
           <Divider/>

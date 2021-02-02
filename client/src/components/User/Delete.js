@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Button} from 'antd';
+import { Button } from 'antd';
 import axios from 'axios';
 
 function Delete(props) {
+  const [error, setError] = useState([]);
 
   function handleSubmit() {
-    axios.delete('/api/trainings/' + props.trainingData.id_training + "?userId="
-      + props.userId)
+    axios.delete('/api/users/' + props.userData.id)
       .then(response => {
         if (response.data.success === 1) {
           // TODO: Make fields empty.

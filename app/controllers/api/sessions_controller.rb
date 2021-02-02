@@ -38,7 +38,8 @@ module Api
         render json: {
           success: 1,
           session: {
-            id: session[:user_id]
+            id: session[:user_id],
+            role: User.find(session[:user_id]).role
           },
           logged_in: 1
         }

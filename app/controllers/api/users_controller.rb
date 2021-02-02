@@ -1,5 +1,8 @@
 module Api
   class UsersController < ApplicationController
+    before_action :logged_in_user, only: [:index, :show, :update, :destroy]
+    before_action :manager_admin?, only: [:index, :update, :destroy, :show]
+
     def index
       users = User.all
 
