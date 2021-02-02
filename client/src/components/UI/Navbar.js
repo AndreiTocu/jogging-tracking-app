@@ -9,6 +9,13 @@ function Navbar(props) {
        <Menu.Item key='Home'>
          <Link to="/">Home</Link>
        </Menu.Item>
+       {(props.userData.id && (props.userData.role === "MANAGER" ||
+         props.userData.role === "ADMIN"))
+         ? <Menu.Item key='Users'>
+             <Link to="/user-feed">Users</Link>
+           </Menu.Item>
+         : null
+       }
        {props.userData.id
          ? <Menu.Item key='Times'>
                <Link to="/feed">My Times</Link>

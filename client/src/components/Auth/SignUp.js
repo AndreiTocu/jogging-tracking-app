@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { useHistory } from 'react-router-dom';
-import { Alert, Layout, Form, Input, Button, Checkbox, Card } from 'antd';
+import { Alert, Layout, Form, Input, Button, Card } from 'antd';
 import axios from 'axios'
 
 const layout = {

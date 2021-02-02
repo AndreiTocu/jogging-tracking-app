@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Modal, Button, TimePicker, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
 import axios from 'axios';
 
 function Add(props) {
-  const [error, setError] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
@@ -18,7 +16,7 @@ function Add(props) {
 
   const handleOk = () => {
     if (time && date && distance) {
-      axios.post('/api/trainings', {
+      axios.post('/api/trainings?userId=' + props.userData.id, {
         training: {
           distance: distance,
           time: time,
@@ -29,8 +27,6 @@ function Add(props) {
           // TODO: Make fields empty.
           props.updateList();
           setIsModalVisible(false);
-        } else {
-          setError(resp.data.error);
         }
       });
     } else {
