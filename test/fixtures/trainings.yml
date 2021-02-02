@@ -16,6 +16,25 @@ three:
   time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
   user: archer
 
+four:
+  date: '2021-02-01'
+  distance: 30.55
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
+  user: archer
+
+five:
+  date: '2021-02-02'
+  distance: 20.55
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
+  user: archer
+
+six:
+  date: '2021-02-03'
+  distance: 10.55
+  time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>,
+  user: archer
+
+
 <% 30.times do |n| %>
 trainings_<%= n %>:
   date: <%= Faker::Date.between('2020-01-01', '2021-01-01') %>

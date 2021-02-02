@@ -20,4 +20,13 @@ class ActiveSupport::TestCase
       }
     }
   end
+
+  def average_speed(distance, trainings)
+    total_time = 0
+    trainings.each do |training|
+      total_time += training.time.seconds_since_midnight
+    end
+
+    return (distance / (total_time / 3600)).round(1)
+  end
 end
