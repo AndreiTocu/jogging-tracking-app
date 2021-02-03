@@ -88,6 +88,19 @@ function Update(props) {
               <Form.Item
                 label="Password Confirmation"
                 name="password_confirmation"
+                rules={[
+                  ({ getFieldValue }) => ({
+                    validator(rule, value) {
+                      if (!value || getFieldValue('password') === value) {
+                        return Promise.resolve();
+                      }
+
+                      return Promise.reject(
+                        'The two passwords that you entered do not match!'
+                      );
+                    },
+                  })
+                ]}
               >
                 <Input.Password />
               </Form.Item>
