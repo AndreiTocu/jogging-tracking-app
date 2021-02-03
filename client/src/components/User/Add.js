@@ -97,6 +97,17 @@ function Add(props) {
                     required: true,
                     message: 'Please input your password confirmation!',
                   },
+                  ({ getFieldValue }) => ({
+                    validator(rule, value) {
+                      if (!value || getFieldValue('password') === value) {
+                        return Promise.resolve();
+                      }
+
+                      return Promise.reject(
+                        'The two passwords that you entered do not match!'
+                      );
+                    },
+                  }),
                 ]}
               >
                 <Input.Password />
