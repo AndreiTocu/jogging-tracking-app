@@ -4,17 +4,11 @@ module TrainingsHelper
   # for each record
   def set_trainings(trainings)
     trainings.map{ |training|
-      {
-        id_training: training.id,
-        distance: training.distance.round(2),
-        time: training.time.strftime("%H:%M:%S"),
-        date: training.date,
-        average_speed: avg_speed(training.distance, training.time).round(2)
-      }
+      format_training(training)
     }
   end
 
-  def set_training(training)
+  def format_training(training)
     {
       id_training: training.id,
       distance: training.distance.round(2),

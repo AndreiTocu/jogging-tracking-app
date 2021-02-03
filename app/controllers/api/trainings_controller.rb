@@ -57,7 +57,7 @@ module Api
       training = Training.find(params[:id])
 
       if training.update(trainings_params)
-        training = set_training(training)
+        training = format_training(training)
         render json: {
           success: 1,
           training: training
