@@ -2,6 +2,9 @@ module Api
   class TrainingsController < ApplicationController
     before_action :logged_in_user, only: [:show, :create, :destroy, :update]
     before_action :current_admin?, only: [:create, :destroy, :update]
+    before_action :validate_from_to, only: [:show]
+    before_action :validate_user, only: [:show]
+    before_action :validate_training, only: [:update, :destroy]
 
     def show
       @user = User.find(params[:id])
@@ -47,7 +50,7 @@ module Api
         }
       else
         render json: {
-          error: training.error.full_messages,
+          error: training.errors.full_messages,
           status: 422,
         }
       end
@@ -74,6 +77,29 @@ module Api
 
       def trainings_params
         params.require(:training).permit(:date, :distance, :time)
+      end
+
+      def validate_from_to
+        fromDate = params[:from]
+        toDate = params[:to]
+        regex = /^\d{4}-\d{2}-\d{2}$/
+        if (!(fromDate == "" || fromDate.nil?) && !(toDate == "" || toDate.nil?))
+          if (regex.match(fromDate).nil? && regex.match(fromDate).nil?)
+            render json: {
+              success: 0,
+              error: "Filter dates invalid"
+            }
+          end
+        end
+      end
+
+      def validate_training
+        if !Training.exists?(params[:id])
+          render json: {
+            success: 0,
+            error: "Training does not exist"
+          }
+        end
       end
   end
 end

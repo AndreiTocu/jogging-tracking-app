@@ -2,6 +2,7 @@ module Api
   class UsersController < ApplicationController
     before_action :logged_in_user, only: [:index, :show, :update, :destroy]
     before_action :manager_admin?, only: [:index, :update, :destroy, :show]
+    before_action :validate_user, only: [:show, :update, :destroy]
 
     def index
       users = User.all

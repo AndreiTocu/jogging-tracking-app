@@ -1,10 +1,10 @@
 class TrainingValidator < ActiveModel::Validator
 
   def validate(record)
-    if !record.date.methods.include?(:strftime)
+    if !record.date.respond_to?(:strftime)
       record.errors.add :base, "Invalid date format"
     end
-    if !record.time.methods.include?(:strftime)
+    if !record.time.respond_to?(:strftime)
       record.errors.add :base, "Invalid time format"
     end
   end

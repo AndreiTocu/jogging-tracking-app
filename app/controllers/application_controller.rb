@@ -28,4 +28,13 @@ class ApplicationController < ActionController::API
         }
       end
     end
+
+    def validate_user
+      if !(User.exists?(params[:id]))
+        render json: {
+          success: 0,
+          error: "User does not exists"
+        }
+      end
+    end
 end
