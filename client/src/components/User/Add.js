@@ -42,7 +42,7 @@ function Add(props) {
       <Button type="primary" onClick={showModal}>
         Create new user
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible}
+      <Modal title="Create new user" visible={isModalVisible}
              onCancel={handleCancel}
              footer={null}>
         <Layout>

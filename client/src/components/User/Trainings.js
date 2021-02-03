@@ -19,7 +19,7 @@ function Trainings(props) {
       <Button type="primary" onClick={showModal}>
         Trainings
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible}
+      <Modal title="Trainings" visible={isModalVisible}
              onCancel={handleCancel}
              footer={null}
              width={800}>

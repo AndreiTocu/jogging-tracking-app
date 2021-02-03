@@ -2,10 +2,6 @@ import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 function RoleRoute(props) {
-
-  useEffect(() => {
-    console.log(props.userData.role);
-  })
   return (
     <Route
       render={({ location }) =>

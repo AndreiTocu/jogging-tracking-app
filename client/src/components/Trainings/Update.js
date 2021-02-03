@@ -66,7 +66,7 @@ function Update(props) {
       <Button type="primary" onClick={showModal}>
         Update
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleSubmit}
+      <Modal title="Update" visible={isModalVisible} onOk={handleSubmit}
              onCancel={handleCancel}>
         <InputNumber min={0} max={10000} onChange={onChangeDistance}
                      defaultValue={props.trainingData.distance}/>
