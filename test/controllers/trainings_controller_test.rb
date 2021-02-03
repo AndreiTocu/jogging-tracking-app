@@ -58,7 +58,7 @@ class TrainingsControllerTest < ActionDispatch::IntegrationTest
     "of archer user" do
     log_in_user(users(:archer))
     filtered_trainings = [trainings(:four), trainings(:five), trainings(:six)]
-    get "/api/feed/#{users(:archer).id}?from='2021-02-01'&to='2021-02-17'"
+    get "/api/feed/#{users(:archer).id}?from=2021-02-01&to=2021-02-17"
 
     correct_response = set_trainings(filtered_trainings)
     decoded_response = JSON.parse(response.body)
@@ -74,6 +74,18 @@ class TrainingsControllerTest < ActionDispatch::IntegrationTest
       assert_equal decoded_response['trainings'][i]['time'],
         correct_response[i][:time]
     end
+  end
+
+  test "should return error for invalid filter dates" do
+    log_in_user(users(:archer))
+    filtered_trainings = [trainings(:four), trainings(:five), trainings(:six)]
+    get "/api/feed/#{users(:archer).id}?from=example&to=example"
+
+    correct_response = set_trainings(filtered_trainings)
+    decoded_response = JSON.parse(response.body)
+
+    assert_equal decoded_response['success'], 0
+    assert_equal decoded_response['error'], "Filter dates invalid"
   end
 
   test "should not delete training when not logged-in" do
