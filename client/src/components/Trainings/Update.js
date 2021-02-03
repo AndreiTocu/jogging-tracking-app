@@ -26,7 +26,6 @@ function Update(props) {
         }
       }).then(response => {
         if (response.data.success === 1) {
-          // TODO: Make fields empty.
           props.updateList();
           setIsModalVisible(false);
         } else {
@@ -39,7 +38,6 @@ function Update(props) {
   };
 
   const handleCancel = () => {
-    // TODO: change the values to null
     setIsModalVisible(false);
   };
 
@@ -67,7 +65,7 @@ function Update(props) {
         Update
       </Button>
       <Modal title="Update" visible={isModalVisible} onOk={handleSubmit}
-             onCancel={handleCancel}>
+             onCancel={handleCancel} destroyOnClose={true}>
         <InputNumber min={0} max={10000} onChange={onChangeDistance}
                      defaultValue={props.trainingData.distance}/>
         <TimePicker onChange={onChangeTime}

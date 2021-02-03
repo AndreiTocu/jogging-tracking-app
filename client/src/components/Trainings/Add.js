@@ -24,7 +24,6 @@ function Add(props) {
         }
       }).then(resp => {
         if (resp.data.success === 1) {
-          // TODO: Make fields empty.
           props.updateList();
           setIsModalVisible(false);
         }
@@ -35,7 +34,6 @@ function Add(props) {
   };
 
   const handleCancel = () => {
-    // TODO: change the values to null
     setIsModalVisible(false);
   };
 
@@ -57,7 +55,7 @@ function Add(props) {
         Create new Record
       </Button>
       <Modal title="Create" visible={isModalVisible} onOk={handleOk}
-             onCancel={handleCancel}>
+             onCancel={handleCancel} destroyOnClose={true}>
         <InputNumber min={0} max={10000}
                      onChange={onChangeDistance} />
         <TimePicker onChange={onChangeTime}

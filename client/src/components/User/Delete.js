@@ -10,7 +10,6 @@ function Delete(props) {
     axios.delete('/api/users/' + props.userData.id)
       .then(response => {
         if (response.data.success === 1) {
-          // TODO: Make fields empty.
           props.updateList();
         }
     });
