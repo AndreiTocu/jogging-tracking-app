@@ -17,19 +17,19 @@ three:
   user: archer
 
 four:
-  date: '2021-02-01'
+  date: '2021-02-11'
   distance: 30.55
   time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
   user: archer
 
 five:
-  date: '2021-02-02'
+  date: '2021-02-12'
   distance: 20.55
   time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>
   user: archer
 
 six:
-  date: '2021-02-03'
+  date: '2021-02-13'
   distance: 10.55
   time: <%= Faker::Time.between(DateTime.now - 1, DateTime.now) %>,
   user: archer

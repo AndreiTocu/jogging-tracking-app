@@ -54,6 +54,28 @@ class TrainingsControllerTest < ActionDispatch::IntegrationTest
       correct_response[0][:time]
   end
 
+  test "should return trainings between 2021-02-11 and 2021-02-17 " +
+    "of archer user" do
+    log_in_user(users(:archer))
+    filtered_trainings = [trainings(:four), trainings(:five), trainings(:six)]
+    get "/api/feed/#{users(:archer).id}?from='2021-02-01'&to='2021-02-17'"
+
+    correct_response = set_trainings(filtered_trainings)
+    decoded_response = JSON.parse(response.body)
+
+    assert_equal decoded_response['success'], 1
+    for i in 0..2 do
+      assert_equal decoded_response['trainings'][i]['average_speed'],
+        correct_response[i][:average_speed]
+      assert_equal decoded_response['trainings'][i]['distance'],
+        correct_response[i][:distance]
+      assert_equal decoded_response['trainings'][i]['date'],
+        correct_response[i][:date].strftime("%Y-%m-%e")
+      assert_equal decoded_response['trainings'][i]['time'],
+        correct_response[i][:time]
+    end
+  end
+
   test "should not delete training when not logged-in" do
     assert_no_difference "Training.count" do
       delete "/api/trainings/#{@user.trainings.first.id }"
