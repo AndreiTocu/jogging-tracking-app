@@ -23,7 +23,6 @@ function Add(props) {
       }
     }).then(response => {
       if (response.data.success === 1) {
-        // TODO: Make fields empty.
         props.updateList();
         setIsModalVisible(false);
       } else {
@@ -33,7 +32,6 @@ function Add(props) {
   };
 
   const handleCancel = () => {
-    // TODO: change the values to null
     setIsModalVisible(false);
   };
 
@@ -43,8 +41,7 @@ function Add(props) {
         Create new user
       </Button>
       <Modal title="Create new user" visible={isModalVisible}
-             onCancel={handleCancel}
-             footer={null}>
+             onCancel={handleCancel} footer={null} destroyOnClose={true}>
         <Layout>
           <Card>
             {error &&

@@ -10,7 +10,6 @@ function Delete(props) {
       + props.userId)
       .then(response => {
         if (response.data.success === 1) {
-          // TODO: Make fields empty.
           props.updateList();
         }
     });
