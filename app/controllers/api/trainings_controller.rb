@@ -5,7 +5,15 @@ module Api
 
     def show
       @user = User.find(params[:id])
+      fromDate = params[:from]
+      toDate = params[:to]
       @trainings = set_trainings(@user.trainings)
+
+      if !(fromDate == "" || toDate == "" || fromDate.nil? || toDate.nil?)
+        @trainings = set_trainings(@user.trainings.where("date >= ? AND date " +
+          "<= ?", fromDate, toDate))
+      end
+
       render json: {
         success: 1,
         trainings: @trainings

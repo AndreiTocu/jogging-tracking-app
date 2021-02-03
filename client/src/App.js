@@ -29,7 +29,6 @@ function App() {
   const setUserSession = useCallback(async () => {
     const sessionDataResponse = await axios.get('/api/session')
       .then(data => data);
-    console.log(sessionDataResponse);
     if (sessionDataResponse.data.success === 1) {
       const userSession = sessionDataResponse.data.session;
       userSession.id ?

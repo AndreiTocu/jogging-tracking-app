@@ -11,7 +11,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     log_in_user(@user)
     post '/api/report', params: {
       id: @user.id,
-      date: '2021-02-05'
+      date: '2021-02-14'
     }
 
     decoded_response = JSON.parse(response.body)
