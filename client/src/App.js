@@ -57,8 +57,8 @@ function App() {
     <>
     {shouldRender
       ? <Layout style={pageContainer}>
-          <Divider/>
           <Navbar userData={userData}/>
+          <Divider/>
           <Content>
             <Switch>
               <Route exact path="/" component={Home}/>

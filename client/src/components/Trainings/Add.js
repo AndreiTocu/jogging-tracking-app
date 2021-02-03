@@ -56,7 +56,7 @@ function Add(props) {
       <Button type="primary" onClick={showModal}>
         Create new Record
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk}
+      <Modal title="Create" visible={isModalVisible} onOk={handleOk}
              onCancel={handleCancel}>
         <InputNumber min={0} max={10000}
                      onChange={onChangeDistance} />

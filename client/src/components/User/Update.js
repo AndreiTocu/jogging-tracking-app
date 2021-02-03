@@ -42,7 +42,7 @@ function Update(props) {
       <Button type="primary" onClick={showModal}>
         Update
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible}
+      <Modal title="Update User" visible={isModalVisible}
              onCancel={handleCancel}
              footer={null}>
         <Layout>
